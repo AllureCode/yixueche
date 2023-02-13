@@ -23,6 +23,11 @@ public class Resp<T> implements Serializable {
         this.success = true;
     }
 
+    public Resp() {
+        this.code = 200;
+        this.success = true;
+    }
+
     public Resp(T data, String message, Boolean success, Integer code) {
         this.code = code;
         this.message = message;
@@ -41,7 +46,9 @@ public class Resp<T> implements Serializable {
     public static <T> Resp<T> ok(T data, String message) {
         return new Resp<>(data, message);
     }
-
+    public static <T> Resp<T> ok() {
+        return new Resp<>();
+    }
     public static <T> Resp<T> fail(T data, String message) {
         return new Resp<>(data, message, false, 502);
     }

@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import yixue.che.bean.Admin;
+import yixue.che.bean.Province;
 import yixue.che.mapper.IAdminMapper;
 import yixue.che.service.IAdminService;
 import yixue.che.util.Tools;
@@ -63,5 +64,10 @@ public class AdminServiceImpl implements IAdminService {
     @Override
     public void deleteByid(Integer id) throws Exception {
         adminMapper.deleteByid(id);
+    }
+
+    @Override
+    public List<Province> countPorvice() throws Exception {
+        return adminMapper.countPorvice();
     }
 }

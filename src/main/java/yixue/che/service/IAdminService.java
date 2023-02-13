@@ -1,6 +1,7 @@
 package yixue.che.service;
 
 import yixue.che.bean.Admin;
+import yixue.che.bean.Province;
 
 import java.util.List;
 
@@ -65,4 +66,9 @@ public interface IAdminService {
      * @throws Exception
      */
     void deleteByid(Integer id)throws Exception;
+
+    /**
+     * 查询省份
+     */
+    List<Province> countPorvice() throws Exception;
 }

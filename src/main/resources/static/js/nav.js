@@ -3,14 +3,15 @@ var navs = [{
 	"icon" : "&#xe600;",
 	"href" : "/manager/main",
 	"spread" : false
-},{
+},
+    {
 	"title" : "用户管理",
 	"icon" : "&#xe600;",
 	"href" : "",
 	"spread" : false,
 	"children" : [
 		{
-			"title" : "普通用户",
+			"title" : "学员管理",
 			"icon" : "&#xe612;",
 			"href" : "/manager/userList",
 			"spread" : false
@@ -31,7 +32,7 @@ var navs = [{
 		{
 			"title" : "旅游路线",
 			"icon" : "&#xe631;",
-			"href" : "/manager/travelRouteList",
+			"href" : "/manager/banner/list",
 			"spread" : false
 		},
         {
@@ -132,7 +133,12 @@ var navs = [{
              "spread" : false
          },
     ]
-}/*,{
+}, {
+        "title" : "轮播图管理",
+        "icon" : "&#xe600;",
+        "href" : "/manager/banner/list",
+        "spread" : false
+    },/*,{
 	"title" : "系统基本参数",
 	"icon" : "&#xe600;",
 	"href" : "/manager/systemParameter",

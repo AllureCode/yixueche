@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>旅游路线管理列表</title>
+	<title>轮播图管理列表</title>
 	<meta name="renderer" content="webkit"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -14,7 +14,7 @@
 	<link rel="stylesheet" th:href="@{/css/news.css}" media="all" />
 </head>
 <body class="childrenBody">
-<form class="layui-form" id="pageForm" name="pageForm" th:action="@{/manager/travelRouteList}" method="post">
+<form class="layui-form" id="pageForm" name="pageForm" th:action="@{/manager/banner/list}" method="post">
 	<blockquote class="layui-elem-quote news_search">
 		<div class="layui-inline">
 		    <div class="layui-input-inline">
@@ -23,32 +23,28 @@
 		    <button class="layui-btn search_btn" type="submit">查询</button>
 		</div>
 		<div class="layui-inline">
-			<a class="layui-btn layui-btn-normal newsAdd_btn">添加旅游路线</a>
+			<a class="layui-btn layui-btn-normal newsAdd_btn">添加轮播图</a>
 		</div>
 	</blockquote>
 	<div class="layui-form news_list">
 	  	<table class="layui-table">
 		    <colgroup>
 				<col width="5%"/>
-				<col width="13%"/>
 				<col width="8%"/>
 				<col width="8%"/>
 				<col width="10%"/>
 				<col width="10%"/>
-				<col width="7%"/>
-				<col width="7%"/>
+				<col width="10%"/>
 				<col width="20%"/>
 		    </colgroup>
 		    <thead>
 				<tr>
 					<th>序号</th>
 					<th>标题</th>
-					<th>出发地</th>
-					<th>目的地</th>
-					<th>出团日期</th>
-					<th>结束日期</th>
-					<th>价格</th>
+					<th>图片</th>
+					<th>描述</th>
 					<th>状态</th>
+					<th>时间</th>
 					<th>操作</th>
 				</tr>
 		    </thead>
@@ -56,23 +52,25 @@
 				<tr th:each="var,iterStat: ${pageData}">
 					<td th:text="${iterStat.count}"></td>
 					<td th:text="${var.title}"></td>
-					<td th:text="${var.startSite}"></td>
-					<td th:text="${var.endSite}"></td>
-					<td th:text="${var.startTime}"></td>
-					<td th:text="${var.endTime}"></td>
-					<td th:text="${var.price}"></td>
-						<td th:if="${var.state==0}">待发布</td>
-						<td th:if="${var.state==1}">已发布</td>
-						<td th:if="${var.state==2}">已撤销</td>
-						<td th:if="${var.state==''}"></td>
 					<td>
-						<a class="layui-btn layui-btn-xs" th:href="@{/manager/travelRouteView(id=${var.id})}">
+						<div class="layui-input-block">
+							<img th:src="@{${var.imgUrl}}" width="100">
+						</div>
+					</td>
+					<td th:text="${var.remark}"></td>
+					<td th:text="${var.gmtCreate}"></td>
+						<td th:if="${var.status==0}">待发布</td>
+						<td th:if="${var.status==1}">已发布</td>
+						<td th:if="${var.status==2}">已下架</td>
+						<td th:if="${var.status==''}"></td>
+					<td>
+						<a class="layui-btn layui-btn-xs" th:href="@{/manager/bannerView(id=${var.id})}">
 							<i class="layui-icon">&#xe60a;</i>
 						</a>
-						<a class="layui-btn layui-btn-xs layui-btn-normal" th:href="@{/manager/travelRouteEdit(id=${var.id})}">
+						<a class="layui-btn layui-btn-xs layui-btn-normal" th:href="@{/manager/bannerEdit(id=${var.id})}">
 							<i class="layui-icon">&#xe642;</i>
 						</a>
-						<a class="layui-btn layui-btn-xs layui-btn-danger" th:href="@{/manager/travelRouteDelete(id=${var.id})}">
+						<a class="layui-btn layui-btn-xs layui-btn-danger" th:href="@{/manager/bannerDelete(id=${var.id})}">
 							<i class="layui-icon">&#xe640;</i>
 						</a>
 					</td>
@@ -114,7 +112,7 @@
 		<input type="hidden" id="size" name="size" th:value="${pageParam.size}"/>
 	</form>
 	<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
-	<script type="text/javascript" th:src="@{/js/travelRoute/travelRouteList.js}"></script>
+	<script type="text/javascript" th:src="@{/js/banner/bannerList.js}"></script>
 	<script type="text/javascript" th:src="@{/js/jquery-1.7.2.js}"></script>
 </body>
 </html>

@@ -50,6 +50,11 @@
     <select id="findByUserName" resultType="yixue.che.bean.Admin">
         SELECT * FROM t_admin_user WHERE USER_NAME = #{userName} AND DELETE_STATUS=0
     </select>
-
-
+    <select id="countPorvice" resultType="yixue.che.bean.Province">
+        SELECT p.`id` PROVICE,COUNT(u.`PROVINCE`)
+            COUNT FROM t_province p
+            LEFT JOIN t_user u ON u.`PROVINCE` = p.`id`
+        GROUP BY p.id
+        ORDER BY PROVICE asc ;
+    </select>
 </mapper>

@@ -6,18 +6,43 @@
         <result column="username" property="username"/>
         <result column="password" property="password"/>
         <result column="nick_name" property="nickName"/>
+        <result column="province" property="province"/>
         <result column="iphone" property="iphone"/>
         <result column="birthday" property="birthday"/>
         <result column="status" property="status"/>
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modify" property="gmtModify"/>
     </resultMap>
+
+    <insert id="save">
+        INSERT INTO t_user(username,password,nick_name,iphone,birthday,province)
+        VALUES(#{username},#{password},#{nickName},#{iphone},#{birthday},#{province})
+    </insert>
     <select id="login" resultMap="UserMap">
         SELECT *
         FROM t_user
         WHERE `username` = #{username}
           AND password = #{password}
           AND `status` = 0;
+    </select>
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_user WHERE status=0
+    </select>
+    <select id="findList" resultMap="UserMap">
+        SELECT * FROM t_user WHERE status=0 ORDER BY gmt_create DESC
+    </select>
+
+    <select id="findListByQuery" resultMap="UserMap">
+        SELECT * FROM t_user
+        WHERE status=0
+          AND username LIKE #{query,jdbcType=VARCHAR}
+        ORDER BY gmt_create DESC
+    </select>
+    <select id="findByUserName" resultType="yixue.che.bean.User">
+        SELECT * FROM t_user WHERE username = #{username} AND status=0
+    </select>
+    <select id="findById" resultType="yixue.che.bean.User">
+        SELECT * FROM t_user WHERE ID = #{id} AND status=0
     </select>
 
 </mapper>

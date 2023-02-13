@@ -24,8 +24,8 @@ spring:
     username: root
     password: username
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/yixueche?serverTimezone=GMT&characterEncoding=UTF-8&allowMultiQueries=true
-  #配置spring boot文件上传大小限制
+    url: jdbc:mysql://localhost:3306/yixueche?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&allowMultiQueries=true
+  #配置spring boot文件上传大小限制 serverTimezone=Asia/Shanghai
   http:
     multipart:
       max-file-size: 10MB

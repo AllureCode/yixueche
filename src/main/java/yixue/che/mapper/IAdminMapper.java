@@ -3,6 +3,7 @@ package yixue.che.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import yixue.che.bean.Admin;
+import yixue.che.bean.Province;
 
 import java.util.List;
 
@@ -64,4 +65,5 @@ public interface IAdminMapper {
      */
     void deleteByid(Integer id);
 
+    List<Province> countPorvice();
 }

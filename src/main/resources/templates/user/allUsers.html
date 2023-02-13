@@ -22,9 +22,9 @@
             </div>
             <button class="layui-btn search_btn" type="submit">查询</button>
         </div>
-        <div class="layui-inline">
-            <a class="layui-btn layui-btn-normal usersAdd_btn">添加用户</a>
-        </div>
+<!--        <div class="layui-inline">-->
+<!--            <a class="layui-btn layui-btn-normal usersAdd_btn">添加学员</a>-->
+<!--        </div>-->
     </blockquote>
     <div class="layui-form news_list">
         <table class="layui-table">
@@ -34,7 +34,7 @@
                 <col width="10%"/>
                 <col width="7%"/>
                 <col width="12%"/>
-                <col width="7%"/>
+                <col width="15%"/>
 
                 <col width="17%"/>
             </colgroup>
@@ -45,7 +45,8 @@
                 <th>用户名</th>
                 <th>手机号码</th>
                 <th>真实姓名</th>
-                <th>身份证</th>
+                <th>生日</th>
+                <th>注册时间</th>
                 <th>状态</th>
                 <th>操作</th>
             </tr>
@@ -54,12 +55,13 @@
             <tr th:each="var,iterStat: ${pageData}">
                 <!--<td><input type="checkbox" name="" title=""/></td>-->
                 <td th:text="${iterStat.count}"></td>
-                <td th:text="${var.userName}"></td>
-                <td th:text="${var.linkTel}"></td>
-                <td th:text="${var.name}"></td>
-                <td th:text="${var.icCode}"></td>
-                <td th:if="${var.state==1}">已注册</td>
-                <td th:if="${var.state==2}">已注销</td>
+                <td th:text="${var.username}"></td>
+                <td th:text="${var.iphone}"></td>
+                <td th:text="${var.nickName}"></td>
+                <td th:text="${var.birthday}"></td>
+                <td th:text="${var.getGmtCreate()}"></td>
+                <td th:if="${var.status==0}">正常</td>
+                <td th:if="${var.status==1}">已注销</td>
 <!--                <td th:if="${var.state==NULL}">不存在</td>-->
                 <td>
                     <a class="layui-btn layui-btn-xs" th:href="@{/manager/userView(id=${var.id})}">

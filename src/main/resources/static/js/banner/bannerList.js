@@ -9,11 +9,11 @@ layui.config({
 	//添加文章
 	$(".newsAdd_btn").click(function(){
 		var index = layui.layer.open({
-			title : "添加旅游路线",
+			title : "添加轮播图",
 			type : 2,
-			content : "/manager/travelRouteAdd",
+			content : "/manager/bannerAdd",
 			success : function(layero, index){
-				layui.layer.tips('点击此处返回旅游路线管理列表', '.layui-layer-setwin .layui-layer-close', {
+				layui.layer.tips('点击此处返回轮播图管理列表', '.layui-layer-setwin .layui-layer-close', {
 					tips: 3
 				});
 			}
